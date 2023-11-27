@@ -5,8 +5,17 @@ BR2_KERNEL_HEADERS_6_1=y
 BR2_ENABLE_LTO=y
 BR2_ROOTFS_POST_BUILD_SCRIPT="board/stmicroelectronics/common/stm32f4xx/stm32-post-build.sh"
 BR2_LINUX_KERNEL=y
-BR2_LINUX_KERNEL_CUSTOM_VERSION=y
-BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE="6.1.27"
+#BR2_LINUX_KERNEL_CUSTOM_VERSION=y
+#BR2_LINUX_KERNEL_CUSTOM_VERSION_VALUE="6.1.27"
+# Can't use LOCAL folder as it's legacy, so we have 2 options for development now
+# (1) git repo, using this BR2_LINUX_KERNEL_CUSTOM_GIT
+# (2) tarball, this can be either (remote) or (local)
+# this is example for remote:
+BR2_LINUX_KERNEL_CUSTOM_TARBALL=y
+# BR2_LINUX_KERNEL_CUSTOM_TARBALL_LOCATION="$(call github,haizzus,linux-stable,v6.1.63.tar.gz)"
+# this will point -> https://github.com/haizzus/linux-stable/archive/refs/tags/v6.1.63.tar.gz
+# I can also make a local tarbal every time!
+BR2_LINUX_KERNEL_CUSTOM_TARBALL_LOCATION="dl/my-kernel.tar.gz"
 BR2_LINUX_KERNEL_USE_CUSTOM_CONFIG=y
 BR2_LINUX_KERNEL_CUSTOM_CONFIG_FILE="board/stmicroelectronics/stm32f429-disco/linux.config"
 BR2_LINUX_KERNEL_IMAGE_TARGET_CUSTOM=y
